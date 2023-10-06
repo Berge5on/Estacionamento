@@ -48,6 +48,7 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
         jTFSenha = new javax.swing.JTextField();
         jBtnCadastrar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
+        jBtnLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,7 +86,6 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
 
         jLabel8.setText("Senha");
 
-        jBtnCadastrar.setBackground(new java.awt.Color(0, 170, 0));
         jBtnCadastrar.setText("Cadastrar");
         jBtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,8 +93,9 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
             }
         });
 
-        jBtnCancelar.setBackground(new java.awt.Color(255, 0, 0));
         jBtnCancelar.setText("Cancelar");
+
+        jBtnLimpar.setText("Limpar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,7 +135,9 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBtnCadastrar)
-                                .addGap(26, 26, 26)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBtnLimpar)
+                                .addGap(18, 18, 18)
                                 .addComponent(jBtnCancelar))
                             .addComponent(jLabel7)
                             .addComponent(jLabel2)
@@ -176,8 +179,9 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnCadastrar)
-                    .addComponent(jBtnCancelar))
-                .addContainerGap(9, Short.MAX_VALUE))
+                    .addComponent(jBtnCancelar)
+                    .addComponent(jBtnLimpar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -247,6 +251,7 @@ public class JFCadastrarMotorista extends javax.swing.JFrame {
     private javax.swing.ButtonGroup jBGGenero;
     private javax.swing.JButton jBtnCadastrar;
     private javax.swing.JButton jBtnCancelar;
+    private javax.swing.JButton jBtnLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
