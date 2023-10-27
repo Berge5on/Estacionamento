@@ -4,9 +4,10 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.bean.Motorista;
 import model.dao.MotoristaDAO;
+import model.bean.Motorista;
 
 /**
  *
@@ -61,8 +62,18 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTMotorista);
 
         jBtnCadastrar.setText("Cadastrar");
+        jBtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCadastrarActionPerformed(evt);
+            }
+        });
 
         jBtnAlterar.setText("Alterar");
+        jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAlterarActionPerformed(evt);
+            }
+        });
 
         jBtnExcluir.setText("Excluir");
 
@@ -108,7 +119,24 @@ public class JFListarMotoristas extends javax.swing.JFrame {
      readJTable();
     
     }//GEN-LAST:event_formWindowOpened
+
+    private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
+        if(jTMotorista.getSelectedRow()!= -1){
+            int motoristaSelecionado = (int)jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0);
+            JFAtualizarMotorista am = new JFAtualizarMotorista(motoristaSelecionado);
+            am.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um Motorista!", "Erro",
+                JOptionPane.ERROR_MESSAGE);
+        }
+        readJTable();
+    }//GEN-LAST:event_jBtnAlterarActionPerformed
+
+    private void jBtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCadastrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtnCadastrarActionPerformed
                              
+
 
     public void readJTable(){
         DefaultTableModel modelo = (DefaultTableModel) jTMotorista.getModel();
