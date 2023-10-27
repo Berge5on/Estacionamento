@@ -4,6 +4,7 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.dao.VagaDAO;
 import model.bean.Vaga;
@@ -136,7 +137,16 @@ public class JFListarVagas extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+    if(jTVaga.getSelectedRow()!= -1){
+        int vagaSelecionada = (int)jTVaga.getValueAt(jTVaga.getSelectedRow(), 0);
+        JFAtualizarVaga av = new JFAtualizarVaga(vagaSelecionada);
+        av.setVisible(true);
+    }else{
+        JOptionPane.showMessageDialog(null, "Selecione uma vaga!", "Erro",
+                JOptionPane.ERROR_MESSAGE);
+
+    }
+    readJTable();
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
