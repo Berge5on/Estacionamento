@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import model.bean.Motorista;
+import model.bean.Vaga;
 
 public class MotoristaDAO {
     
@@ -119,5 +120,20 @@ public class MotoristaDAO {
             ConnectionFactory.closeConnection(con,stmt);
         }
     }
-    
+     public void delete(Motorista m){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try{
+            stmt = con.prepareStatement("DELETE FROM motorista WHERE idMotorista=?;");
+            stmt.setInt(1, m.getIdMotorista());
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Motorista excluido com sucesso!");
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + e);
+        } finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        
+     }
 }

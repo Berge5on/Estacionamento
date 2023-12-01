@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.dao.MotoristaDAO;
 import model.bean.Motorista;
+import model.bean.Vaga;
+import model.dao.VagaDAO;
 
 /**
  *
@@ -38,8 +40,11 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         jBtnAlterar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -76,6 +81,11 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         });
 
         jBtnExcluir.setText("Excluir");
+        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,8 +143,31 @@ public class JFListarMotoristas extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCadastrarActionPerformed
+        JFCadastrarMotorista cm = new JFCadastrarMotorista();
+        cm.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnCadastrarActionPerformed
+
+    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        if(jTMotorista.getSelectedRow()!= -1 ){
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja excluir o motorista selecionado?", "Exclusão", JOptionPane.YES_NO_OPTION);
+            if (opcao == 0){
+                MotoristaDAO dao = new MotoristaDAO();
+                Motorista m = new Motorista ();
+                m.setIdMotorista((int)jTMotorista.getValueAt(jTMotorista.getSelectedRow(), 0));
+                dao.delete(m);
+            }
+            
+        } else{
+            JOptionPane.showMessageDialog(null, "Selecione uma motorista!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        readJTable();                                         
+    }//GEN-LAST:event_jBtnExcluirActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        readJTable();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
                              
 
 
